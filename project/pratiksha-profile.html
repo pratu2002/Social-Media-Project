@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style-pf.css">
+
+    <!-- Title-->
+    <title>Pratiksha Profile</title>
+
+</head>
+
+<body>
+    <div class="profile-card">
+        <div class="card-img">
+            <img src="./img-pf/pratiksha.png" width="100" height="100">
+        </div>
+
+        <div class="card-name">
+            marathi_mulgi
+        </div>
+
+        <br>
+
+        <div class="profile-info">
+            आयुष्यात 👏जर खुश राहायचं असेल ,तर हसण्याचं 😂😂कारण शोधत 🔎राहा.
+        </div>
+
+        <br>
+
+        <div class="location">
+            📍 Maharashtra, India
+        </div>
+
+        <div class="followers">
+            <p id="followersCount">1500 <br> Followers</p>
+            <p>650 <br>Following</p>
+        </div>
+
+        <div class="msg-follow">
+            <button class="msg" onclick="show()">Message</button>
+            <button class="follow" type="button" onclick="increaseFollowers()">Follow</button>
+        </div>
+
+    </div>
+
+    <!-- Message card -->
+    <div id="msg-card">
+        <form class="profile-card-form">
+
+            <div class="text-box">
+                <textarea placeholder="Say something..."></textarea>
+            </div>
+
+            <div class="send-cancel-btn">
+                <button class="send" onclick="close()">Send</button>
+                <button class="cancel">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Custom Java-script -->
+    <script src="popForm.js"> </script>
+
+    <script src="profile.js">  </script>
+
+</body>
+
+</html>

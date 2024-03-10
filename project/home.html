@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sociogram</title>
+</head>
+<body>
+    <header>
+        <nav>
+        <div class="container">
+            <div id="logo">
+                <img src="images/logolight.png" class="light" alt="logo">
+                <img src="images/logodark.png" class="dark" alt="logo">
+            </div>
+            <div id="search-bar">
+                <span class="material-symbols-outlined">search</span>
+                <input type="search" placeholder="Search...">
+            </div>
+            <div id="create-post">
+                <button class="btn" onclick="openPostForm()">Create a Post</button>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <div id="post-form" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePostForm()">&times;</span>
+                <h2>Create a Post</h2>
+                <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+                <label for="post-image">Image</label>
+                <input type="file" id="post-image" accept="image/*" class="btn">
+                <label for="post-video">Video</label>
+                <input type="file" id="post-video" accept="video/*" class="btn">
+                <button class="btn" onclick="createPost()">Post</button>
+        </div>
+    </div>
+    <main>
+    <div class="container">
+        <div class="left">
+            <section id="user-profile">
+            <a  id = "link-profile"class="profile" href="index.html">
+                <div class="profile-photo">
+                    <img id="img-tag" src="images/user_4.jpeg" alt="profile-picture">
+                </div>
+
+                
+                <div class="handle">
+                   <h2 id="user-text">Rutuja</h2>
+                <p class="text-muted" id="username">@rutuja-id</p></div>
+               
+            </a>
+            </section>
+            <aside id="sidebar">
+                <ul class="links">
+                    <li>
+                        <span class="material-symbols-outlined">home</span>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined">explore</span>
+                        <a href="#">Explore</a></li>
+                    <li onclick="openNotifications()">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <a href="#" onclick="openNotifications()">Notifications</a></li>
+                    <li>
+                        <span class="material-symbols-outlined">settings</span>
+                        <a href="#" id="theme">Settings</a></li>
+                   
+                    <li>
+                        <span class="material-symbols-outlined">logout</span>
+                        <a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </aside>
+            <div id="notification-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeNotifications()">&times;</span>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_1.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Sharvil</b> accepted your friend request
+                            <small class="text-muted">2 Days Ago</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_2.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Raj_Patel</b> commented on your post
+                            <small class="text-muted">1 Hour Ago</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_3.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Harshu_10</b> and <b>283 Others</b> liked your post
+                            <small class="text-muted">4 Minutes Ago</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_5.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>Pratu_0316</b> commented on a post you are tagged in
+                            <small class="text-muted">2 Days Ago</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_6.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>aditiiiii</b> commented on a post you are tagged in
+                            <small class="text-muted">1 Hour Ago</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="profile-photo">
+                            <img src="./images/user_7.jpg">
+                        </div>
+                        <div class="notification-body">
+                            <b>priyannkk__</b> commented on your post
+                            <small class="text-muted">1 Hour Ago</small>
+                        </div>
+                    </div>
+                    <!-- Add more notifications here -->
+                </div>
+            </div>
+
+        </div>
+        <div class="middle">
+            <!--============storiesss===========-->
+            <div class="stories-container">
+                <div class="content">
+                    <div class="previous-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </div>
+                    <div class="stories"></div>
+                    <div class="next-btn active">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="stories-full-view">
+                <div class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </div>
+
+                <div class="content">
+                    <div class="previous-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </div>
+
+                    <div class="story">
+                        <img src="middle section images/story2.jpg" alt="">
+                        <div class="author">Author</div>
+                    </div>
+
+                    <div class="next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+
+                    </div>
+
+                </div>
+            </div>
+            <!---------------------------------------Create Post-------------------------------------->
+            <Form class="Create-post">
+                <div class="profile-photo">
+                    <img id="post-imagee" src="images/user_4.jpeg">
+                </div>
+                <input type="text" placeholder="What's On Your Mind, " id="Create-post">
+                <button type="submit" value="post" class="btn">Post</button>
+            </Form>
+            <!--end create post-->
+            <div id="posts"><!-- Display posts --></div>
+            <!--postssss-->
+            <!--------------------------------------Post Section Start--------------------------------->
+            <div class="card">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Rutuja.jpeg" alt="user" class="cover">
+                        </div>
+                        <a href="rutuja-profile.html"><h3> Rutujaa.j<br><span>Mumbai, Maharashtra</span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Rutuja.jpeg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart" onclick="likeButton()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share" >
+                    </div>
+                </div>
+
+                <h4 class="likes">5,489 likes</h4>
+                <h4 class="caption">
+                    <b>Rutujaa.j</b>Happiness is a State of mind...<br><span> # Good Vibes</span> 
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="Middle Section Images\Rutuja.jpeg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>   
+                </div>
+                    <h5 class="postTime">5 hours ago</h5>
+            </div>
+            <!----------------------------End--------------------------------->
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Pratiksha1.jpg" alt="user" class="cover">
+                        </div>
+                        <a href="pratiksha-profile.html"> <h3> Pratu_0316 <br><span> Pune </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Pratiksha1.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="hearts" onclick="likeButton1()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like" style="margin-top: 5px; color: #4d4d4f;">5,000 likes</h4>
+                <h4 class="caption">
+                    <b> Pratu_0316 </b>
+                    Vibes✨..<br>
+                    <span>#Shine </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle Section Images/Pratiksha1.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">5 hours ago</h5>
+            </div>
+            <!--End-->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Sharvil.jpg" alt="user" class="cover">
+                        </div>
+                        <a href="sherwil-profile.html"><h3> Sharvil_Dewarde <br><span> India </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Sharvil.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart1" onclick="likeButton2()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like1" style="margin-top: 5px; color: #4d4d4f;">6,000 likes</h4>
+                <h4 class="caption">
+                    <b>Sharvil_Dewarde</b>
+                    Always Smiling<br>
+                    <span>#Unique </span>
+                    <span># Fav </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle section images/Sharvil.jpg" alt="user" class="profile-photo">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                </div>
+                    
+                <h5 class="postTime">5 hours ago</h5>
+            </div>
+            <!--end-->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Rutuja.jpeg" alt="user" class="cover">
+                        </div>
+                        <a href="rutuja-profile.html"><h3>Rutujaa.j <br><span> India </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/rutuja1.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart2" onclick="likeButton3()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like2" style="margin-top: 5px; color: #4d4d4f;">3,000 likes</h4>
+                <h4 class="caption">
+                    <b>Rutujaa.j</b>
+                    Saree Love..<br>
+                </h4>
+                <h4 id="vc" class="comments"> View All Comments</h4>
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="Middle Section Images\Rutuja.jpeg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> 
+                        </ul>
+                    </div>
+                    
+                </div>   
+                <h5 class="postTime">5 hours ago</h5>
+            </div>
+            <!--------------------End------------------->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/stories9.jpg" alt="user" class="cover">
+                        </div>
+                        <a href="harshada-profile.html"><h3> Harshu_10 <br><span> Home </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/stories9.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart3" onclick="likeButton4()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like4" style="margin-top: 5px; color: #4d4d4f;">550 likes</h4>
+                <h4 class="caption">
+                    <b>Harshada</b>
+                    ..Furrend🐶🦴...<br>
+                    <span> #Love </span>
+                    <span> #Dogs </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle section images/Stories9.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">14 hours ago</h5>
+            </div>
+
+                
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Sharvil.jpg" alt="user" class="cover">
+                        </div>
+                        <h3> Sharvil_Dewarde <br><span> India </span></h3>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Sharvil1.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart4" onclick="likeButton5()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like5" style="margin-top: 5px; color: #4d4d4f;">1,458 likes</h4>
+                <h4 class="caption">
+                    <b>Sharvil_Dewarde</b>
+                    Horse Riding..<br>
+                    <span>#Beach Vibes </span>
+                    <span> # Fav </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle section images/Sharvil.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">5 hours ago</h5>
+            </div>
+                
+
+            <!--end-->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/Pratiksha1.jpg" alt="user" class="cover">
+                        </div>
+                        <a href="pratiksha-profile.html"><h3> Pratu_0316 <br><span> Pune </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Pratiksha2.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart5" onclick="likeButton6()">
+                        <img src="middle section images/comment.png" alt="comment" >
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like6" style="margin-top: 5px; color: #4d4d4f;">2,555 likes</h4>
+                <h4 class="caption">
+                    <b> Pratu_0316 </b>
+                    Minimalistic<br>
+                    <span>#Cameraroll </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle Section Images/Pratiksha1.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">10 hours ago</h5>
+            </div>
+
+            <!--End-->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/stories9.jpg" alt="user" class="cover">
+                        </div>
+                        <h3> Harshu_10 <br><span> Home </span></h3>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/Harshada.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart6" onclick="likeButton7()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like7" style="margin-top: 5px; color: #4d4d4f;">4,335 likes</h4>
+                <h4 class="caption">
+                    <b>Harshu_10</b>
+                    Bliss..<br>
+                    <span> # Nature </span>
+                    <span> # Oneday </span>
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle section images/Stories9.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">22 hours ago</h5>
+            </div>
+
+             
+
+            <!--End-->
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="top">
+                    <div class="userDetails">
+                        <div class="profileImg">
+                            <img src="middle section images/raj.jpg" alt="user" class="cover">
+                        </div>
+                        <a href="raj-profile.html"><h3> Raj_Patel <br><span> Gujrat </span></h3></a>
+                    </div>
+                    <div class="dot">
+                        <img src="middle section images/dots.png" alt="dot" style="height: 2rem;">
+                    </div>
+                </div>
+
+                <div class="imgBg">
+                    <img src="middle section images/raj.jpg" alt="user" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="middle section images/heart.png" alt="heart" class="heart7" onclick="likeButton8()">
+                        <img src="middle section images/comment.png" alt="comment">
+                        <img src="middle section images/share.png" alt="share">
+                    </div>
+                </div>
+
+                <h4 class="like8" style="margin-top: 5px; color: #4d4d4f;">200 likes</h4>
+                <h4 class="caption">
+                    <b> Raj_Patel </b>
+                    Traditional look<br>
+                    <span>#Black</span>
+                    
+                </h4>
+                <h4 class="comments"> View All Comments</h4>
+                <div class="addComments">
+                    <div class="userImg">
+                        <img src="middle Section Images/raj.jpg" alt="user" class="cover">
+                    </div>
+                    <input type="text" class="text comment-box" placeholder="Add a Comment..."> 
+                    <button class="post">Post</button>
+                    <div class="uo">
+                        <ul class="unordered"> </ul>
+                    </div>
+                        
+                </div>
+                <h5 class="postTime">5 hours ago</h5>
+            </div>
+            <!--end postss-->
+        </div>   
+            <div class="right">
+                <div  id = "cont" class="containerchat">
+                    <!--Text buttons-->
+                    <div class="navchat">
+                        <div class="primary">
+                            <h3 id="primary">Primary</h3>
+                        </div>
+                        <div class="general">
+                            <h3 id="general">General</h3>
+                        </div>
+                        <div class="requests">
+                            <h3 id="requests">Request</h3>
+                        </div>
+                    </div>
+                    <!--Users -->
+                    <div id = "u1" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_1.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>sharvil</h2>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <input id="text-box-u1" type="text" autofocus placeholder="Type">
+                        <button type="button" id="send-u1">Send</button>
+                    </div>
+                    </div>
+            
+                    <div id = "u2" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_2.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>raj</h2>
+                            </div>
+                        </div>
+                    
+                        <div class="input-div">
+                            <input id="text-box-u2" type="text" autofocus placeholder="Type">
+                            <button type="button" id="send-u2">Send</button>
+                        </div>
+                    </div>
+            
+                    <div id = "u3" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_3.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>harshada</h2>
+                            </div>
+                        </div>
+                    
+                        <div class="input-div">
+                            <input id="text-box-u3" type="text" autofocus placeholder="Type">
+                            <button type="button" id="send-u3">Send</button>
+                        </div>
+                    </div>
+            
+                    <div id = "u4" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_4.jpeg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>rutuja</h2>
+                            </div>
+                        </div>
+                    
+                        <div class="input-div">
+                            <input id="text-box-u4" type="text" autofocus placeholder="Type...">
+                            <button type="button" id="send-u4">Send</button>
+                        </div>
+                    </div>
+            
+                    <div id = "u5" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_5.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>pratiksha</h2>
+                            </div>
+                        </div>
+                    
+                        <div class="input-div">
+                            <input id="text-box-u5" type="text" autofocus placeholder="Type">
+                            <button type="button" id="send-u5">Send</button>
+                        </div>
+                    </div>
+                    <!---Requests section-->
+                    <div id = "u6" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_6.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>aditi</h2>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id = "u7" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_7.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>priyank</h2>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id = "u8" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_8.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>shubham</h2>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id = "u9" class="user">
+                        <div class="profile-user">
+                            <div class="profile-photo">
+                                <img src="images/user_9.jpg" alt="profile-picture">
+                            </div>
+                            <div class="handle">
+                                <h2>jessica</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!----------------- THEME CUSTOMIZATION -------------------->
+        <div class="customize-theme">
+            <div class="card">
+                <h2>Customize your view</h2>
+                <p class="text-muted">Manage your font size, color, and background</p>
+
+                <!----------- FONT SIZE ----------->
+                <div class="font-size">
+                    <h4>Font Size</h4>
+                    <div>
+                        <h6>Aa</h6>
+                        <div class="choose-size">
+                            <span class="font-size-1"></span>
+                            <span class="font-size-2 active"></span>
+                            <span class="font-size-3"></span>
+                            <span class="font-size-4"></span>
+                            <span class="font-size-5"></span>
+                        </div>
+                        <h3>Aa</h3>
+                    </div>
+                </div>
+
+                <!----------- PRIMARY COLORS ----------->
+                <div class="color">
+                    <h4>Color</h4>
+                    <div class="choose-color">
+                        <span class="color-1 active"></span>
+                        <span class="color-2"></span>
+                        <span class="color-3"></span>
+                        <span class="color-4"></span>
+                        <span class="color-5"></span>
+                    </div>
+                </div>
+
+                <!----------- BACKGROUND COLORS ----------->
+                <div class="background">
+                    <h4>Background</h4>
+                    <div class="choose-bg">
+                        <div class="bg-1 active">
+                            <span></span>
+                            <h5 for="bg-1">Light</h5>
+                        </div>
+                        <div class="bg-2">
+                            <span></span>
+                            <h5 for="bg-2">Dim</h5>
+                        </div>
+                        <div class="bg-3">
+                            <span></span>
+                            <h5 for="bg-3">Dark</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!--js files-->
+    <script src="app.js"></script>
+    <script src="chat.js"></script>
+    <script src="story.js"></script>
+
+</body>
+</html>

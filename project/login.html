@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Login-page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="home.html" class="sign-in-form">
+                <h2 class="title">Sign In</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="user" placeholder="Username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="passw" placeholder="password">
+                </div>
+                <input type="submit" value="Sign In"  class="btn" onclick="funLog()">
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="account-text">Don't have an account?<a href="home.html" id="sign-up-btn2">Sign up</a></p>
+            </form>
+
+            <form action="" class="sign-up-form">
+                <h2 class="title">Sign Up</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" id="username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" id="email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="password" id="psw">
+                </div>
+                <input type="submit" value="Sign Up" class="btn" onclick="funReg()">
+                <p class="social-text">Or Sign Up with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="account-text">Already have an account?<a href="home.html" id="sign-in-btn2">Sign in</a></p>
+                
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Member Already?</h3>
+                    <p>Elevate Your Presence - SOCIOGRAM</p>
+                    <button class="btn" id="sign-in-btn" onclick="func()">Sign In</button>
+                </div>
+                <img src="images-1/SCial_final.png"  class="image">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3 style="color: blueviolet;">New Member?</h3>
+                    <p style="color: blueviolet ;">Elevate Your Presence - SOCIOGRAM</p>
+                    <button class="btn" id="sign-up-btn">Sign Up</button>
+                </div>
+                <img src="images-1/SCial_final.png"  class="image">
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+    <script>
+        let users = [];
+        function funReg() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('psw').value;
+
+   
+    let users = JSON.parse(localStorage.getItem('Users')) || [];
+
+  
+    let user = {
+        Username: username,
+        Password: password
+    };
+
+    
+    users.push(user);
+
+    localStorage.setItem("Users", JSON.stringify(users));
+
+    alert("Successfully registered");
+    console.log("pressed");
+}
+
+function funLog() {
+    let username = document.getElementById('user').value;
+    let password = document.getElementById('passw').value;
+
+    let users = JSON.parse(localStorage.getItem('Users')) || [];
+
+    let userExists = users.some(user => user.Username === username && user.Password === password);
+
+    if (userExists) {
+        alert("Login Successfully");
+        window.location.assign("home.html");
+        localStorage.setItem("LoggedInUser", username);
+    } else {
+        alert("Invalid username or password");
+        window.location.assign("login.html");
+    }
+}
+
+
+
+    </script>
+</body>
+
+</html>
